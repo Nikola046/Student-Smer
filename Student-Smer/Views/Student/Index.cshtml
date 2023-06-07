@@ -1,0 +1,68 @@
+﻿@model StudentListView
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista studenata</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<div class=" md-form mb-3">
+    <input class="form-control" type="text" autofocus placeholder="Pretraga" onkeyup="studentSearch(event,this.value)" />
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Students.First().Ime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Students.First().Prezime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Students.First().Smer)
+            </th>
+            <th>Akcije</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Students.OrderBy(p => p.Smer.NazivSmera))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prezime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Smer.NazivSmera)
+                </td>
+                <td>
+                    @Html.ActionLink("Detalji", "Details", new {Id=item.StudentID})|
+                    @Html.ActionLink("Izmeni", "Edit", new {Id=item.StudentID})|
+                    @Html.ActionLink("Obrisi", "Delete", new {Id=item.StudentID}, new{onclick="return DeleteStudent();"})
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts{
+
+    <script>
+        function DeleteStudent() {
+            return confirm("Da li ste sigurni da zelite da obrisete studenta?");
+        }
+
+        function studentSearch(e, filter) {
+            if (e.keyCode == 13) {
+                window.location.href = "/Student/Index?filter=" + filter;
+            }
+        }
+    </script>
+}

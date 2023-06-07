@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Student_Smer.Models.Smer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista smerova</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<div class=" md-form mb-3">
+    <input class="form-control" type="text" autofocus placeholder="Pretraga" onkeyup="smerSearch(event,this.value)" />
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NazivSmera)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sifra)
+            </th>
+            <th>Akcije</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NazivSmera)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sifra)
+            </td>
+            <td>
+                    @Html.ActionLink("Izmeni", "Edit", new{id=item.SmerID})|
+                    @Html.ActionLink("Obrisi", "Delete", new{id=item.SmerID}, new {onclick="return DeleteSmer();"})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@section Scripts{
+
+    <script>
+        function DeleteSmer() {
+            return confirm("Da li ste sigurni da zelite da obrisete smer?");
+        }
+
+        function smerSearch(e, filter) {
+            if (e.keyCode == 13) {
+                window.location.href = "/Smer/Index?filter=" + filter;
+            }
+        }
+    </script>
+}
