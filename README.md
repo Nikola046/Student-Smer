@@ -7,3 +7,4 @@
 ![PretragaStudentaPoImenu](https://github.com/Nikola046/Student-Smer/assets/88964904/f49673ab-0d3a-436f-a11c-bf743ecb4af3)
 ![PretragaStudentaPoSmeru](https://github.com/Nikola046/Student-Smer/assets/88964904/7332f5c8-9800-48b2-9bcb-10b7f2c59f19)
 ![IzmenaStudenta](https://github.com/Nikola046/Student-Smer/assets/88964904/5469a503-e631-4012-a549-f0f4b2b0bc39)
+![detalji](https://github.com/Nikola046/Student-Smer/assets/88964904/44d445d7-32ec-488f-ba17-c427c8f8b971)
